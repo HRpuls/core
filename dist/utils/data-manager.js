@@ -525,6 +525,7 @@ var DataManager = /*#__PURE__*/ (function () {
           var tableData = _objectSpread(
             _objectSpread(
               {
+                index: index,
                 id: row[idSynonym] || index,
                 // `uuid` acts as our 'key' and is generated when new data
                 // is passed into material-table externally.
@@ -735,7 +736,10 @@ var DataManager = /*#__PURE__*/ (function () {
     {
       key: 'changeFilterValue',
       value: function changeFilterValue(columnId, value) {
-        this.columns[columnId].tableData.filterValue = value;
+        var column = this.columns.find(function (c) {
+          return c.tableData.id === columnId;
+        });
+        column.tableData.filterValue = value;
         this.filtered = false;
       }
     },
@@ -1213,7 +1217,7 @@ var DataManager = /*#__PURE__*/ (function () {
             });
           } else {
             result = list.sort(function (a, b) {
-              return columnDef.customSort(a, b, 'row');
+              return columnDef.customSort(a, b, 'row', _this4.orderDirection);
             });
           }
         } else {
@@ -1477,10 +1481,20 @@ var DataManager = /*#__PURE__*/ (function () {
               return list.sort(
                 columnDef.tableData.groupSort === 'desc'
                   ? function (a, b) {
-                      return columnDef.customSort(b.value, a.value, 'group');
+                      return columnDef.customSort(
+                        b.value,
+                        a.value,
+                        'group',
+                        columnDef.tableData.groupSort
+                      );
                     }
                   : function (a, b) {
-                      return columnDef.customSort(a.value, b.value, 'group');
+                      return columnDef.customSort(
+                        a.value,
+                        b.value,
+                        'group',
+                        columnDef.tableData.groupSort
+                      );
                     }
               );
             } else {

@@ -430,7 +430,19 @@ var propTypes = {
     sorting: _propTypes['default'].bool,
     keepSortDirectionOnColumnSwitch: _propTypes['default'].bool,
     toolbar: _propTypes['default'].bool,
-    thirdSortClick: _propTypes['default'].bool
+    thirdSortClick: _propTypes['default'].bool,
+    numberOfPagesAround: _propTypes['default'].oneOf([
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ])
   }),
   localization: _propTypes['default'].shape({
     grouping: _propTypes['default'].shape({

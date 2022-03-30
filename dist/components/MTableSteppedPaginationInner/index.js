@@ -93,10 +93,16 @@ function MTablePaginationInner(props) {
     );
   };
 
-  function renderPagesButton(start, end) {
-    var buttons = [];
+  function renderPagesButton(start, end, maxPages, numberOfPagesAround) {
+    var buttons = []; // normalize to 1 - 10
 
-    for (var p = start; p <= end; p++) {
+    numberOfPagesAround = Math.max(1, Math.min(10, numberOfPagesAround));
+
+    for (
+      var p = Math.max(start - numberOfPagesAround + 1, 0);
+      p <= Math.min(end + numberOfPagesAround - 1, maxPages);
+      p++
+    ) {
       var buttonVariant = p === props.page ? 'contained' : 'text';
       buttons.push(
         /*#__PURE__*/ _react['default'].createElement(
@@ -129,7 +135,8 @@ function MTablePaginationInner(props) {
       page = props.page,
       rowsPerPage = props.rowsPerPage,
       theme = props.theme,
-      showFirstLastPageButtons = props.showFirstLastPageButtons;
+      showFirstLastPageButtons = props.showFirstLastPageButtons,
+      numberOfPagesAround = props.numberOfPagesAround;
 
     var localization = _objectSpread(
       _objectSpread({}, MTablePaginationInner.defaultProps.localization),
@@ -200,7 +207,7 @@ function MTablePaginationInner(props) {
         {
           smDown: true
         },
-        renderPagesButton(pageStart, pageEnd)
+        renderPagesButton(pageStart, pageEnd, maxPages, numberOfPagesAround)
       ),
       /*#__PURE__*/ _react['default'].createElement(
         _Tooltip['default'],

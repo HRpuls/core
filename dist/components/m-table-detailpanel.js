@@ -22,7 +22,11 @@ var _slicedToArray2 = _interopRequireDefault(
 var _react = _interopRequireDefault(require('react'));
 
 function MTableDetailPanel(props) {
-  var _React$useState = _react['default'].useState(false),
+  var shouldOpen = Boolean(
+    props.data.tableData && props.data.tableData.showDetailPanel
+  );
+
+  var _React$useState = _react['default'].useState(shouldOpen),
     _React$useState2 = (0, _slicedToArray2['default'])(_React$useState, 2),
     isOpen = _React$useState2[0],
     setOpen = _React$useState2[1];
@@ -37,14 +41,11 @@ function MTableDetailPanel(props) {
 
   _react['default'].useEffect(
     function () {
-      var shouldOpen = Boolean(
-        props.data.tableData && props.data.tableData.showDetailPanel
-      );
       setTimeout(function () {
         setOpen(shouldOpen);
       }, 5);
     },
-    [props.data.tableData.showDetailPanel]
+    [shouldOpen]
   );
 
   var renderFunction; // See issue #282 for more on why we have to check for the existence of props.detailPanel

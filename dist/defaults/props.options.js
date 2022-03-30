@@ -58,6 +58,7 @@ var _default = {
     right: 0
   },
   thirdSortClick: true,
-  overflowY: 'auto'
+  overflowY: 'auto',
+  numberOfPagesAround: 1
 };
 exports['default'] = _default;

@@ -355,7 +355,10 @@ function MTableHeader(_ref) {
             {
               key: columnDef.tableData.id,
               draggableId: columnDef.tableData.id.toString(),
-              index: index
+              index: index,
+              style: {
+                zIndex: 99
+              }
             },
             function (provided, snapshot) {
               return /*#__PURE__*/ _react['default'].createElement(
@@ -368,13 +371,7 @@ function MTableHeader(_ref) {
                   provided.dragHandleProps,
                   {
                     style: snapshot.isDragging
-                      ? _objectSpread(
-                          _objectSpread({}, provided.draggableProps.style),
-                          {},
-                          {
-                            position: 'static'
-                          }
-                        )
+                      ? provided.draggableProps.style
                       : {
                           position: 'relative',
                           minWidth: 0,

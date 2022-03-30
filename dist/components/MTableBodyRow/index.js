@@ -627,9 +627,9 @@ function MTableBodyRow(props) {
           onClick: function onClick(event) {
             if (persistEvents) {
               event.persist();
-            }
+            } // Rows cannot be clicked while editing
 
-            handleOnRowClick(event);
+            !hasAnyEditingRow && handleOnRowClick(event);
           },
           hover: !!(onRowClick || onRowDoubleClick),
           style: getStyle(props.index, props.level)

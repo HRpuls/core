@@ -1209,7 +1209,7 @@ var MaterialTable = /*#__PURE__*/ (function (_React$Component) {
             return a.defaultSort && a.sorting !== false;
           });
           prevSortDirection =
-            prevSortColumnIndex > -1
+            prevSortColumnIndex > -1 && props.columns[prevSortColumnIndex]
               ? props.columns[prevSortColumnIndex].defaultSort
               : '';
         } // If the default sorting changed and differs from the current default sorting, it will trigger a new sorting
@@ -1677,7 +1677,9 @@ var MaterialTable = /*#__PURE__*/ (function (_React$Component) {
                               icons: props.icons,
                               localization: localization,
                               showFirstLastPageButtons:
-                                props.options.showFirstLastPageButtons
+                                props.options.showFirstLastPageButtons,
+                              numberOfPagesAround:
+                                props.options.numberOfPagesAround
                             })
                           );
                     },
@@ -1880,7 +1882,7 @@ var MaterialTable = /*#__PURE__*/ (function (_React$Component) {
                                 top: 0,
                                 left: 0,
                                 boxShadow: '2px 0px 15px rgba(125,147,178,.25)',
-                                overflowX: 'hidden',
+                                overflowX: 'clip',
                                 zIndex: 11
                               }
                             },
