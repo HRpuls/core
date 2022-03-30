@@ -73,6 +73,7 @@ export default class DataManager {
     this.data = data.map((row, index) => {
       const prevTableData = prevDataObject[row[idSynonym]] || {};
       const tableData = {
+        index,
         id: row[idSynonym] || index,
         // `uuid` acts as our 'key' and is generated when new data
         // is passed into material-table externally.
@@ -217,7 +218,9 @@ export default class DataManager {
   }
 
   changeFilterValue(columnId, value) {
-    this.columns[columnId].tableData.filterValue = value;
+    const column = this.columns.find((c) => c.tableData.id === columnId);
+
+    column.tableData.filterValue = value;
     this.filtered = false;
   }
 
@@ -714,7 +717,9 @@ export default class DataManager {
       if (this.orderDirection === 'desc') {
         result = list.sort((a, b) => columnDef.customSort(b, a, 'row', 'desc'));
       } else {
-        result = list.sort((a, b) => columnDef.customSort(a, b, 'row'));
+        result = list.sort((a, b) =>
+          columnDef.customSort(a, b, 'row', this.orderDirection)
+        );
       }
     } else {
       result = list.sort(
@@ -1133,8 +1138,20 @@ export default class DataManager {
         if (columnDef.customSort) {
           return list.sort(
             columnDef.tableData.groupSort === 'desc'
-              ? (a, b) => columnDef.customSort(b.value, a.value, 'group')
-              : (a, b) => columnDef.customSort(a.value, b.value, 'group')
+              ? (a, b) =>
+                  columnDef.customSort(
+                    b.value,
+                    a.value,
+                    'group',
+                    columnDef.tableData.groupSort
+                  )
+              : (a, b) =>
+                  columnDef.customSort(
+                    a.value,
+                    b.value,
+                    'group',
+                    columnDef.tableData.groupSort
+                  )
           );
         } else {
           return list.sort(

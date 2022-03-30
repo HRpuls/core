@@ -141,7 +141,7 @@ export default class MaterialTable extends React.Component {
         (a) => a.defaultSort && a.sorting !== false
       );
       prevSortDirection =
-        prevSortColumnIndex > -1
+        prevSortColumnIndex > -1 && props.columns[prevSortColumnIndex]
           ? props.columns[prevSortColumnIndex].defaultSort
           : '';
     }
@@ -945,6 +945,7 @@ export default class MaterialTable extends React.Component {
                       showFirstLastPageButtons={
                         props.options.showFirstLastPageButtons
                       }
+                      numberOfPagesAround={props.options.numberOfPagesAround}
                     />
                   )
                 }
@@ -1253,7 +1254,7 @@ export default class MaterialTable extends React.Component {
                             top: 0,
                             left: 0,
                             boxShadow: '2px 0px 15px rgba(125,147,178,.25)',
-                            overflowX: 'hidden',
+                            overflowX: 'clip',
                             zIndex: 11
                           }}
                         >

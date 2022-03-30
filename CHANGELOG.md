@@ -1,3 +1,49 @@
+#### 4.3.38 (2022-03-19)
+
+##### New Features
+
+- add index to tableData ([8187c0fd](https://github.com/material-table-core/core/commit/8187c0fd36c3aa2dd451ce36e23b84cff2988009))
+
+#### 4.3.37 (2022-03-19)
+
+##### New Features
+
+- add sortDirection to customSort ([23b02f1f](https://github.com/material-table-core/core/commit/23b02f1f7ab8bc47e56f50bb450799a485150422))
+
+#### 4.3.36 (2022-03-08)
+
+##### Bug Fixes
+
+- background shadow breaks for fixed columns ([#503](https://github.com/material-table-core/core/pull/503)) ([02543a52](https://github.com/material-table-core/core/commit/02543a521863c0f4f6305fe882fae5ac09078e53))
+
+#### 4.3.35 (2022-03-06)
+
+#### 4.3.34 (2022-03-06)
+
+##### New Features
+
+- keep detail panel open on rerender ([a881c1b8](https://github.com/material-table-core/core/commit/a881c1b8d9a3729d86e00643e3d513dc419ab47a))
+
+#### 4.3.33 (2022-03-06)
+
+##### Bug Fixes
+
+- edit mode with fixed columns breaks table layout ([#498](https://github.com/material-table-core/core/pull/498)) ([58cdfa45](https://github.com/material-table-core/core/commit/58cdfa45638b386b18aca8b4cffc8775900640d2))
+
+#### 4.3.32 (2022-02-26)
+
+##### New Features
+
+- Rows cannot be clicked while editing ([96afa7d2](https://github.com/material-table-core/core/commit/96afa7d2236fd00768b9037ad850f0d6a2f8ec44))
+
+##### Bug Fixes
+
+- show dragging header text on drag ([479b7532](https://github.com/material-table-core/core/commit/479b7532d263a2b9f2069dc7d449316e00970c86))
+
+##### Other Changes
+
+- //github.com/material-table-core/core ([c13b88a4](https://github.com/material-table-core/core/commit/c13b88a45aa7d6a33d275da2c869a76074aae8a0))
+
 #### 4.3.31 (2022-02-14)
 
 ##### Other Changes
